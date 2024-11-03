@@ -1,0 +1,69 @@
+Estrutura Geral
+O código representa uma calculadora simples que permite ao usuário realizar operações matemáticas básicas (adição, subtração, multiplicação e divisão) e mantém um histórico das operações realizadas.
+
+1. Histórico de Operações
+historico = []
+Aqui, estamos inicializando uma lista vazia chamada historico, que será usada para armazenar as operações realizadas pelo usuário.
+
+2. Loop Infinito
+while True:
+O uso de (while True) cria um loop infinito, permitindo que a calculadora continue a operar até que o usuário decida sair.
+
+3. Menu de Operações
+print("\nEscolha uma operação:")
+print("1. Adição")
+print("2. Subtração")
+print("3. Multiplicação")
+print("4. Divisão")
+print("5. Ver histórico")
+print("6. Sair")
+Aqui, o programa exibe um menu para o usuário escolher qual operação deseja realizar.
+
+4. Captura da Operação
+operacao = input("Digite o número da operação (1/2/3/4/5/6): ")
+O usuário é solicitado a digitar o número correspondente à operação desejada.
+
+5. Verificação de Saída
+if operacao == '6':
+    print("Saindo...")
+    break
+Se o usuário escolher '6', o programa imprime uma mensagem e sai do loop, encerrando a calculadora.
+
+6. Visualizar Histórico
+if operacao == '5':
+    if historico:
+        print("\nHistórico de operações:")
+        for item in historico:
+            print(item)
+    else:
+        print("Nenhuma operação realizada até agora.")
+    continue
+Caso o usuário escolha '5', o programa verifica se existem operações armazenadas no histórico. Se houver, ele imprime cada item; caso contrário, 
+informa que nenhuma operação foi realizada. O (continue) faz o loop reiniciar, permitindo que o usuário escolha outra operação.
+
+7. Execução das Operações
+if operacao in operacoes:
+    num1 = obter_numero("Digite o primeiro número: ")
+    num2 = obter_numero("Digite o segundo número: ")
+
+    resultado = operacoes[operacao](num1, num2)
+    historico.append(f"{num1} {['+', '-', '*', '/'][int(operacao)-1]} {num2} = {resultado}")
+
+    print(f"O resultado é: {resultado}")
+Se a operação escolhida estiver entre as disponíveis, o programa solicita ao usuário que insira dois números. A função obter_numero 
+(que não foi mostrada, mas presumivelmente lê e valida a entrada do usuário) é chamada para garantir que os valores inseridos sejam válidos. 
+Em seguida, a operação correspondente é executada e o resultado é armazenado no histórico, que é formatado em uma string descritiva.
+
+8. Tratamento de Operação Inválida
+else:
+    print("Operação inválida.")
+Se o usuário inserir uma operação que não está entre as opções válidas, uma mensagem de erro é exibida.
+
+9. Execução do Programa
+if __name__ == "__main__":
+    calculadora()
+Esse bloco permite que a função principal da calculadora seja executada apenas se o script for executado diretamente, e não se for importado como um módulo.
+
+Conclusão:
+Esse código fornece uma interface interativa simples para realizar operações matemáticas, armazenando um histórico das operações em um formato legível.
+A estrutura modular, através do uso de funções e listas, facilita a manutenção e a extensão futura da calculadora, caso novas operações ou funcionalidades sejam desejadas.
